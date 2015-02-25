@@ -1,0 +1,15 @@
+{
+  "name": "khe-temp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/pdilyard/khe-temp",
+  "authors": [
+    "Paul Dilyard <paul.dilyard@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "foundation": "~5.5.1",
+    "jquery": "~2.1.3"
+  }
+}
