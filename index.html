@@ -31,7 +31,57 @@
       </div>
     </div>
 
+    <div class="row">
+      <br><br>
+      <div class="small-4 small-offset-4 columns">
+        <p class="align-center">Get updates about KHE:</p>
+        <p id="thanks" class="align-center">Thanks, you'll be hearing from us soon!</p>
+        <p id="error" class="align-center">That email is already in use.</p>
+        <form>
+          <div class="row collapse">
+            <div class="small-10 columns">
+              <input type="text" placeholder="Email" id="email">
+            </div>
+            <div class="small-2 columns">
+              <button href="#" class="button postfix">Go</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
   </div>
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script>
+  var $form = $('form');
+  var $email = $('#email');
+  var $thanks = $('#thanks');
+  var $error = $('#error');
+
+  $thanks.hide();
+  $error.hide();
+
+  $form.submit(function (e) {
+    e.preventDefault();
+    $.post('http://api.khe.io/news', {
+      email: $email.val()
+    }).
+    done(function (data) {
+      $thanks.show();
+      $error.hide();
+      $form.hide();
+    }).
+    fail(function (data) {
+      $thanks.hide();
+      $error.show();
+      $form.show();
+    }).
+    always(function () {
+      $email.val('');
+    });
+  });
+  </script>
 
 </body>
 </html>
